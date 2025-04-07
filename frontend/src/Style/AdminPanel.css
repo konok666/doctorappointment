@@ -174,30 +174,94 @@ input, select {
 }
 
 /* Doctor List */
-.doctor-list h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-.doctor-grid {
+.admin-doctor-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #f9fafb;
 }
-.doctor-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
+
+.admin-doctor-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: center;
-  padding: 15px;
+  padding: 1.5rem 1rem 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
 }
-.doctor-card img {
-  width: 100px;
-  height: 100px;
+
+.admin-doctor-card:hover {
+  transform: translateY(-4px);
+}
+
+.admin-doctor-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+}
+
+.admin-doctor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-doctor-info .status {
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.admin-doctor-info .status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
   border-radius: 50%;
 }
-.doctor-card p {
-  margin-top: 10px;
+
+.admin-doctor-info h2 {
+  font-size: 1rem;
   font-weight: bold;
+  margin: 0.3rem 0;
 }
+
+.admin-doctor-info p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.remove-doctor-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-doctor-btn:hover {
+  background-color: #dc2626;
+}
+
 
 /* Add Patient Button */
 .button-container {
@@ -235,13 +299,13 @@ input, select {
     justify-content: center;
     gap: 15px;
   }
-  .doctor-grid {
+  .admin-doctor-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 500px) {
-  .doctor-grid {
+  .admin-doctor-grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }

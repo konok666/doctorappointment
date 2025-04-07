@@ -7,50 +7,58 @@ import "../Style/AdminPanel.css";
 
 const AdminPanel = () => {
   const [activePage, setActivePage] = useState("appointments");
+
   const [appointments, setAppointments] = useState([
     { name: "Bishal Chaudhury", date: "24th July, 2024" },
     { name: "John Doe", date: "25th July, 2024" },
     { name: "Jane Smith", date: "26th July, 2024" },
   ]);
-  
+
+  const [doctors, setDoctors] = useState([
+    { img: "/doc1.png", name: "Dr. Richard James", specialization: "Neurologist" },
+    { img: "/doc2.png", name: "Dr. Sarah Connor", specialization: "Dermatologist" },
+    { img: "/doc3.png", name: "Dr. Emily Clark", specialization: "Gynecologist" },
+    { img: "/doc4.png", name: "Dr. John Doe", specialization: "Pediatrician" },
+    { img: "/doc5.png", name: "Dr. Alice Green", specialization: "Gastroenterologist" },
+    { img: "/doc6.png", name: "Dr. Alice Green", specialization: "General Physician" }
+  ]);
+
   const removeAppointment = (index) => {
     setAppointments(appointments.filter((_, i) => i !== index));
   };
-  
+
+  const removeDoctor = (index) => {
+    setDoctors(doctors.filter((_, i) => i !== index));
+  };
+
   const renderContent = () => {
     switch (activePage) {
-
-      /* appointments */
       case "appointments":
-  return (
-    <div className="latest-appointments">
-      <h2><FaCalendarCheck /> Latest Appointments</h2>
-      {appointments.map((appointment, index) => (
-        <div key={index} className="appointment-item">
-          <div className="appointment-details">
-            <img src="profile_pic.png" alt="Patient" />
-            <div>
-              <p className="font-bold">{appointment.name}</p>
-              <p className="text-sm text-gray-500">Booking on {appointment.date}</p>
-            </div>
+        return (
+          <div className="latest-appointments">
+            <h2><FaCalendarCheck /> Latest Appointments</h2>
+            {appointments.map((appointment, index) => (
+              <div key={index} className="appointment-item">
+                <div className="appointment-details">
+                  <img src="profile_pic.png" alt="Patient" />
+                  <div>
+                    <p className="font-bold">{appointment.name}</p>
+                    <p className="text-sm text-gray-500">Booking on {appointment.date}</p>
+                  </div>
+                </div>
+                <button className="close-btn" onClick={() => removeAppointment(index)}>
+                  <AiOutlineClose />
+                </button>
+              </div>
+            ))}
           </div>
-          <button className="close-btn" onClick={() => removeAppointment(index)}>
-            <AiOutlineClose />
-          </button>
-        </div>
-      ))}
-    </div>
-  );
+        );
 
-
-      /* doctors */
       case "addDoctor":
         return (
           <div className="add-doctor-page">
             <h2>Add Doctor</h2>
             <div className="doctor-form">
-        
-              {/* Profile Picture Upload Section */}
               <div className="upload-section">
                 <input type="file" id="doctor-image" accept="image/*" style={{ display: "none" }} />
                 <label htmlFor="doctor-image" className="upload-label">
@@ -59,18 +67,14 @@ const AdminPanel = () => {
                 </label>
               </div>
 
-              {/* Doctor Information Fields */}
               <div className="doctor-fields">
                 <div className="left-column">
                   <label>Doctor Name</label>
                   <input type="text" className="small-width-input" placeholder="Enter doctor name" />
-
                   <label>Doctor Email</label>
                   <input type="email" className="small-width-input" placeholder="Enter email" />
-
                   <label>Doctor Password</label>
                   <input type="password" className="small-width-input" placeholder="Enter password" />
-
                   <label>Experience</label>
                   <select className="small-width-input">
                     <option value="">Select experience</option>
@@ -81,9 +85,8 @@ const AdminPanel = () => {
                 </div>
 
                 <div className="right-column">
-                <label>Address</label>
-                <input type="text" className="small-width-input" placeholder="Enter address" />
-                
+                  <label>Address</label>
+                  <input type="text" className="small-width-input" placeholder="Enter address" />
                   <label>Speciality</label>
                   <select className="small-width-input">
                     <option value="">Select speciality</option>
@@ -93,97 +96,79 @@ const AdminPanel = () => {
                     <option value="Neurologist">Neurologist</option>
                     <option value="Gynecologist">Gynecologist</option>
                     <option value="General Physician">General Physician</option>
-                </select>
+                  </select>
+                  <label>Education</label>
+                  <input type="text" className="small-width-input" placeholder="Enter education" />
+                  <label>Doctor Fees</label>
+                  <input type="text" className="small-width-input" placeholder="Enter fees" />
+                </div>
+              </div>
 
-                <label>Education</label>
-                <input type="text" className="small-width-input" placeholder="Enter education" />
-
-                <label>Doctor Fees</label>
-                <input type="number" className="small-width-input" placeholder="Enter fees" />
+              <div className="button-container">
+                <button className="add-doctor-btn">Add Doctor</button>
               </div>
             </div>
-        
-            {/* Add Doctor Button - Positioned Lower */}
-              <div className="button-container">
-              <button className="add-doctor-btn">Add Doctor</button>
-            </div>
-
           </div>
-        </div>
-      );
+        );
 
-
-      /* doctorsList */
       case "doctorsList":
-  return (
-    <div className="doctor-list">
-      <h2>Doctor List</h2>
-      <div className="doctor-grid">
-        {[
-          { img: "/doc1.png", name: "Dr. Smith", specialization: "General Physician" },
-          { img: "/doc2.png", name: "Dr. Johnson", specialization: "Gynecologist" },
-          { img: "/doc3.png", name: "Dr. Williams", specialization: "Dermatologist" },
-          { img: "/doc4.png", name: "Dr. Brown", specialization: "Pediatrician" },
-          { img: "/doc5.png", name: "Dr. Jones", specialization: "Neurologist" },
-          { img: "/doc6.png", name: "Dr. Miller", specialization: "Gastroenterologist" }
-        ].map((doctor, index) => (
-          <div key={index} className="doctor-card">
-            <img src={doctor.img} alt="Doctor" />
-            <h1>{doctor.name}</h1>
-            <p>{doctor.specialization}</p>
+        return (
+          <div className="admin-doctor-cards">
+            {doctors.map((doctor, index) => (
+              <div key={index} className="admin-doctor-card">
+                <img src={doctor.img} alt="Doctor" />
+                <div className="admin-doctor-info">
+                  <span className="status">Available</span>
+                  <h2>{doctor.name}</h2>
+                  <p>{doctor.specialization}</p>
+                </div>
+                <button
+                  className="remove-doctor-btn"
+                  onClick={() => removeDoctor(index)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  );
+        );
 
-      /* Patients */
       case "addPatients":
-  return (
-    <div className="add-patients-page">
-      <h2>Add Patients</h2>
-      <div className="patients-form">
-        
-        {/* Profile Picture Upload Section */}
-        <div className="upload-section">
-          <input type="file" id="patient-image" accept="image/*" style={{ display: "none" }} />
-          <label htmlFor="patient-image" className="upload-label">
-            <img src="/profile_pic.png" alt="Profile" className="profile" />
-            <p>Choose Profile</p>
-          </label>
-        </div>
+        return (
+          <div className="add-patients-page">
+            <h2>Add Patients</h2>
+            <div className="patients-form">
+              <div className="upload-section">
+                <input type="file" id="patient-image" accept="image/*" style={{ display: "none" }} />
+                <label htmlFor="patient-image" className="upload-label">
+                  <img src="/profile_pic.png" alt="Profile" className="profile" />
+                  <p>Choose Profile</p>
+                </label>
+              </div>
 
-        {/* Patient Information Fields */}
-        <div className="patients-fields">
-          <div className="left-column">
-            <label>Patient Name</label>
-            <input type="text" className="small-width-input" placeholder="Enter patient name" />
+              <div className="patients-fields">
+                <div className="left-column">
+                  <label>Patient Name</label>
+                  <input type="text" className="small-width-input" placeholder="Enter patient name" />
+                  <label>Patient Email</label>
+                  <input type="email" className="small-width-input" placeholder="Enter email" />
+                  <label>Age</label>
+                  <input type="number" className="small-width-input" placeholder="Enter age" />
+                  <label>Patient Problem</label>
+                  <input type="text" className="small-width-input" placeholder="Enter problem" />
+                  <label>Address</label>
+                  <input type="text" className="small-width-input" placeholder="Enter address" />
+                  <label>Booking Date</label>
+                  <input type="date" className="small-width-input" />
+                </div>
+              </div>
 
-            <label>Patient Email</label>
-            <input type="email" className="small-width-input" placeholder="Enter email" />
-
-            <label>Age</label>
-            <input type="number" className="small-width-input" placeholder="Enter age" />
-
-            <label>Patient Problem</label>
-            <input type="text" className="small-width-input" placeholder="Enter problem" />
-
-            <label>Address</label>
-            <input type="text" className="small-width-input" placeholder="Enter address" />
-
-            <label>Booking Date</label>
-            <input type="date" className="small-width-input" />
+              <div className="button-container">
+                <button className="add-patient-btn">Add Patient</button>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Add Patient Button - Positioned Lower */}
-        <div className="button-container">
-          <button className="add-patient-btn">Add Patient</button>
-        </div>
-
-      </div>
-    </div>
-  );
+        );
 
       default:
         return <h2>Dashboard</h2>;
@@ -192,7 +177,6 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-panel flex">
-      {/* Sidebar */}
       <div className="admin-sidebar">
         <h2>Dashboard</h2>
         <ul>
@@ -203,12 +187,10 @@ const AdminPanel = () => {
         </ul>
       </div>
 
-      {/* Main Content */}
       <div className="admin-main-content">
-        {/* Header Section */}
         <div className="header-section">
-          <div className="stats-card"><FaUserMd /><p>14 Doctors</p></div>
-          <div className="stats-card"><FaCalendarCheck /><p>2 Appointments</p></div>
+          <div className="stats-card"><FaUserMd /><p>{doctors.length} Doctors</p></div>
+          <div className="stats-card"><FaCalendarCheck /><p>{appointments.length} Appointments</p></div>
           <div className="stats-card"><FaUser /><p>5 Patients</p></div>
         </div>
         {renderContent()}
