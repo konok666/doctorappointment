@@ -17,7 +17,7 @@ import PatientForm from "./Pages/PatientForm";  // Patient form page
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div  className="App">
         {/* Navigation bar */}
         <Navbar />
 
