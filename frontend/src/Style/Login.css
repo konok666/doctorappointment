@@ -1,0 +1,118 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0faff;
+}
+
+/* Login Page Styles */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.login-card {
+  background-color: #e0fcf8; /* Softer card background */
+    padding: 2.5rem;
+    border-radius: 25px; /* Rounded corners for the card */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    width: 100%;
+    max-width: 450px; /* Adjust width to match layout */
+    text-align: center;
+}
+
+.login-image img {
+  width: 150px;
+  height: auto;
+  margin: 0 auto 1rem;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  font-size: 1.8rem; /* Bold title */
+  font-weight: bold;
+  color: #1a1a1a; /* Darker text color for contrast */
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Larger spacing between inputs */
+}
+
+.login-input {
+  padding: 0.9rem 1rem; /* Balanced padding */
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 20px; /* Rounded corners for inputs */
+  background: #fff; /* White input background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: #009688; /* Teal border for focus */
+  box-shadow: 0 6px 15px rgba(0, 150, 136, 0.3); /* Focus shadow */
+}
+
+.login-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-button,
+.signup-button {
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem; /* Adjust button position */
+}
+
+.login-button {
+  padding: 0.9rem 1rem; /* Padding for a button-like appearance */
+  background-color: #4987ff; /* Green button background */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem; /* Slightly larger button text */
+  border: none;
+  border-radius: 25px; /* Fully rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem; /* Adjust button position */
+}
+
+.signup-button {
+  padding: 0.9rem 1rem; /* Padding for a button-like appearance */
+  background-color: #28a745; /* Green button background */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem; /* Slightly larger button text */
+  border: none;
+  border-radius: 25px; /* Fully rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem; /* Adjust button position */
+}
+
+.login-button:hover {
+  background-color: #2f6de9; /* Darker green on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.signup-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}

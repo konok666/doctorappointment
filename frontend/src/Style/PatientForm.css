@@ -1,0 +1,125 @@
+.patient-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .patient-form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .patient-form-container .doctor-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .patient-form-container .doctor-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+  }
+  
+  .patient-form-container .appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .patient-form-container .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .patient-form-container label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .patient-form-container input,
+  .patient-form-container textarea {
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: border-color 0.3s;
+  }
+  
+  .patient-form-container textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .patient-form-container input:focus,
+  .patient-form-container textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .patient-form-container .form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .patient-form-container .submit-button,
+  .patient-form-container .back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .patient-form-container .submit-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .patient-form-container .submit-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .patient-form-container .back-button {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .patient-form-container .back-button:hover {
+    background-color: #5a6268;
+  }
+  
+  .patient-form-container .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .patient-form-container .doctor-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .patient-form-container .form-actions {
+      flex-direction: column;
+    }
+  
+    .patient-form-container .submit-button,
+    .patient-form-container .back-button {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,247 @@
+/* General Styling */
+.admin-panel {
+  display: flex;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 240px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.admin-sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.admin-sidebar li {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.admin-sidebar li:hover {
+  background-color: rgb(136, 228, 228);
+}
+
+/* Main Content */
+.admin-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background: #ffffff;
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.stats-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  text-align: center;
+}
+.stats-card svg {
+  font-size: 24px;
+  color: #007bff;
+}
+
+/* Latest Appointments */
+.latest-appointments h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.appointment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.appointment-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.appointment-details img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #ff0000;
+}
+
+/* Forms for Adding Doctor & Patients */
+.doctor-form, .patients-form {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+.doctor-fields, .patients-fields {
+  display: flex;
+  gap: 20px;
+}
+.left-column, .right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+label {
+  font-weight: bold;
+}
+input, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Profile Upload Section */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✅ Aligns items to the left */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Circular Profile Image */
+.profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid blue; /* Blue border */
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* File Input Label */
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input Fields Styling */
+.patients-fields {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.small-width-input {
+  width: 250px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Doctor List */
+.doctor-list h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.doctor-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+}
+.doctor-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.doctor-card p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Add Patient Button */
+.button-container {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+
+.add-patient-btn {
+  background-color: #319494;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-patient-btn:hover {
+  background-color: #196969;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-panel {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    text-align: center;
+  }
+  .admin-sidebar ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  .doctor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .doctor-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

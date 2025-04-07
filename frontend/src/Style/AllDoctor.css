@@ -1,0 +1,106 @@
+/* Container Styles */
+.all-doctor-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+}
+
+/* Specialist List Section */
+.specialist-list {
+  background: #fff;
+  width: 30%;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.specialist-list h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.specialist-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.specialist-list li {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.specialist-list li:hover {
+  background: #f9fafb;
+}
+
+.specialist-list li.active {
+  background: #e5f4ff;
+  border-color: #3b82f6;
+  font-weight: bold;
+}
+
+/* Doctor Cards Section */
+.doctor-cards {
+  width: 70%; /* Adjust as per layout needs */
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex; /* Change to flexbox for horizontal alignment */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 1rem; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling if necessary */
+}
+
+.doctor-card {
+  flex: 0 0 auto; /* Prevent shrinking and ensure the card retains its size */
+  width: 12rem; /* Fixed width for each card */
+  height: 12rem; /* Fixed height for each card */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center-align content horizontally */
+  justify-content: center; /* Center-align content vertically */
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Ensure white background */
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-align: center; /* Center-align text */
+}
+
+.doctor-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+
+.doctor-card img {
+  width: 5rem; /* Adjust image size */
+  height: 5rem; /* Adjust image size */
+  border-radius: 50%; /* Circle shape for image */
+  object-fit: cover;
+  margin-bottom: 0.5rem; /* Space between image and text */
+}
+
+.doctor-info span {
+  color: #10b981; /* Green color for "Available" status */
+  font-weight: bold;
+  display: block; /* Display as a separate line */
+  margin-bottom: 0.5rem;
+}
+
+.doctor-info h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.doctor-info p {
+  color: #6b7280; /* Gray text */
+  font-size: 0.875rem;
+  margin: 0;
+}
+

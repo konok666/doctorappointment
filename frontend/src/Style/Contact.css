@@ -1,0 +1,112 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr; /* Adjusted proportions for smaller left section */
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Left Section: Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Add spacing between inputs */
+}
+
+form input,
+form textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem; /* Increased padding for better appearance */
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for inputs */
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #38b2ac;
+  box-shadow: 0 0 6px rgba(56, 178, 172, 0.5);
+}
+
+form textarea {
+  border: 2px solid #ccc; /* Increased border thickness */
+  border-radius: 8px;
+  padding: 1rem; /* Increased padding for better appearance */
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for inputs */
+  min-height: 180px; /* Increased height for the textarea */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+button {
+  font-size: 14px; /* Reduce font size */
+  padding: 8px 16px; /* Reduce padding */
+  background-color: #38b2ac;
+  color: white;
+  border: none;
+  border-radius: 6px; /* Adjust border radius if needed */
+  transition: background-color 0.3s;
+  align-self: flex-start; /* Align button to the left */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #319795;
+}
+
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-xl {
+  border-radius: 12px;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Right Section: Image and Office Details */
+img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.25rem 0;
+}
+
+/* Highlighted "Contact Us" title */
+.text-teal-500 {
+  color: #38b2ac;
+}
