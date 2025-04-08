@@ -154,7 +154,7 @@ const AllDoctor = () => {
       </aside>
 
       <div className="doctor-section">
-        <h2 className="available-doctors-heading">Available Doctors</h2>
+        <h2 className="available-doctors-heading">All Doctors</h2>
         <main className="doctor-cards">
           {filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor, index) => (
