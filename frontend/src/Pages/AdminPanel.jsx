@@ -113,10 +113,12 @@ const AdminPanel = () => {
 
       case "doctorsList":
         return (
-          <div className="admin-doctor-cards">
-            {doctors.map((doctor, index) => (
+          <div className="doctors-list-container">
+            <h2 className="doctors-list-heading">Doctors List</h2>
+            <div className="admin-doctor-cards">
+              {doctors.map((doctor, index) => (
               <div key={index} className="admin-doctor-card">
-                <img src={doctor.img} alt="Doctor" />
+              <img src={doctor.img} alt="Doctor" />
                 <div className="admin-doctor-info">
                   <span className="status">Available</span>
                   <h2>{doctor.name}</h2>
@@ -126,12 +128,13 @@ const AdminPanel = () => {
                   className="remove-doctor-btn"
                   onClick={() => removeDoctor(index)}
                 >
-                  Remove
+                Remove
                 </button>
               </div>
             ))}
           </div>
-        );
+        </div>
+      );
 
       case "addPatients":
         return (
