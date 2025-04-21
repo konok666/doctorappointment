@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { FaUserMd, FaCalendarCheck, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { MdDashboard, MdPersonAdd } from "react-icons/md";
 import { IoMdListBox } from "react-icons/io";
-import { AiOutlineClose } from "react-icons/ai";
 import "../Style/AdminPanel.css";
 
 const AdminPanel = () => {
   const navigate = useNavigate();
-  const [activePage, setActivePage] = useState("appointments");
+  const [activePage, setActivePage] = useState("dashboard");
 
   const [doctors, setDoctors] = useState([
     { img: "/doc1.png", name: "Dr. Richard James", specialization: "Neurologist" },
@@ -24,13 +23,28 @@ const AdminPanel = () => {
   };
 
   const handleLogout = () => {
-    // Clear token or session if using any auth
-    localStorage.removeItem("adminToken"); // adjust key as needed
+    localStorage.removeItem("adminToken");
     navigate("/admin-login");
   };
 
   const renderContent = () => {
     switch (activePage) {
+      case "dashboard":
+        return (
+          <div className="dashboard-home">
+            <h2>Welcome to Admin Panel</h2>
+            <p>Select an option from the sidebar to manage doctors, patients, and appointments.</p>
+          </div>
+        );
+      case "appointments":
+        navigate("/view-patients");
+        return null;
+      case "addPatient":
+        navigate("/add-patient");
+        return null;
+      case "addDoctor":
+        navigate("/add-doctors");
+        return null;
       case "doctorsList":
         return (
           <div className="doctors-list-container">
@@ -44,10 +58,7 @@ const AdminPanel = () => {
                     <h2>{doctor.name}</h2>
                     <p>{doctor.specialization}</p>
                   </div>
-                  <button
-                    className="remove-doctor-btn"
-                    onClick={() => removeDoctor(index)}
-                  >
+                  <button className="remove-doctor-btn" onClick={() => removeDoctor(index)}>
                     Remove
                   </button>
                 </div>
@@ -56,7 +67,7 @@ const AdminPanel = () => {
           </div>
         );
       default:
-        return <h2>Welcome to Admin Panel</h2>;
+        return <h2>Page not found</h2>;
     }
   };
 
@@ -65,19 +76,19 @@ const AdminPanel = () => {
       <div className="admin-sidebar">
         <h2>Dashboard</h2>
         <ul>
-          <li onClick={() => setActivePage("appointments")}>
+          <li onClick={() => setActivePage("dashboard")}>
             <MdDashboard /> Dashboard
           </li>
-          <li onClick={() => navigate("/view-patients")}>
+          <li onClick={() => setActivePage("appointments")}>
             <FaCalendarCheck /> Appointments
           </li>
           <li onClick={() => setActivePage("doctorsList")}>
             <IoMdListBox /> Doctors List
           </li>
-          <li onClick={() => navigate("/add-patient")}>
+          <li onClick={() => setActivePage("addPatient")}>
             <MdPersonAdd /> Add Patient
           </li>
-          <li onClick={() => navigate("/add-doctors")}>
+          <li onClick={() => setActivePage("addDoctor")}>
             <MdPersonAdd /> Add Doctor
           </li>
           <li onClick={handleLogout} style={{ color: "red", fontWeight: "bold" }}>

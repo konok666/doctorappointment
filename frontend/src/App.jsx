@@ -45,7 +45,6 @@ function App() {
             <Route path="/add-patient" element={<AddPatients />} />
             <Route path="/view-patients" element={<ViewPatients  />} />
             <Route path="/edit-patients/:id" element={<FormPatientEdit />} />
-
           </Routes>
         </main>
 
