@@ -18,6 +18,7 @@ import AddPatients from './Pages/AddPatients';
 import ViewPatients from './Pages/ViewPatients';
 import FormPatientEdit from './Pages/FormPatientEdit';
 import AddDoctors from './Pages/AddDoctors';
+import AppointmentTable from './Pages/AppointmentTable';
  // Fixed casing (Capital "C")
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
             <Route path="/add-patient" element={<AddPatients />} />
             <Route path="/view-patients" element={<ViewPatients  />} />
             <Route path="/edit-patients/:id" element={<FormPatientEdit />} />
+            <Route path="/view-patients" element={<ViewPatients  />} />
+            <Route path="/appointmentList" element={<AppointmentTable  />} />
           </Routes>
         </main>
 

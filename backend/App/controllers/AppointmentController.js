@@ -46,18 +46,28 @@ const AppointmentView = async (req, res) => {
 // List: Get all appointments
 const AppointmentList = async (req, res) => {
   try {
-    const appointments = await AppointmentModel.find();
+    const appointments = await AppointmentModel.find().sort({ appointmentDate: -1 });
+
+    if (!appointments || appointments.length === 0) {
+      return res.status(404).json({
+        message: "No appointments found",
+        data: [],
+      });
+    }
+
     res.status(200).json({
       message: "Appointments retrieved successfully",
       data: appointments,
     });
   } catch (error) {
+    console.error("Error fetching appointments:", error); // Optional: helpful for server-side logging
     res.status(500).json({
       message: "Internal server error",
       error: error.message,
     });
   }
 };
+
 
 // Delete: Remove an appointment by ID
 const AppointmentDelete = async (req, res) => {

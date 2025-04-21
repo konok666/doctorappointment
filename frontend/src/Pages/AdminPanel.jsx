@@ -45,6 +45,9 @@ const AdminPanel = () => {
       case "addDoctor":
         navigate("/add-doctors");
         return null;
+        case "appointmentTable":
+        navigate("/appointment-table");
+        return null;
       case "doctorsList":
         return (
           <div className="doctors-list-container">
@@ -81,6 +84,9 @@ const AdminPanel = () => {
           </li>
           <li onClick={() => setActivePage("appointments")}>
             <FaCalendarCheck /> Appointments
+          </li>
+          <li onClick={() => navigate("/appointmentList")}>
+            <FaCalendarCheck /> Latest Appointments
           </li>
           <li onClick={() => setActivePage("doctorsList")}>
             <IoMdListBox /> Doctors List
