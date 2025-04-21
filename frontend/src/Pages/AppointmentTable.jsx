@@ -76,10 +76,15 @@ const PatientList = () => {
   return (
     <div className="patient-list-container">
       <div className="header-row">
-        <h2>All Patient Appointments</h2>
-        <button className="back-button" onClick={() => navigate("/admin-panel")}>
-          Back to Dashboard
-        </button>
+        <div className="left">
+          <button className="back-button" onClick={() => navigate("/admin-panel")}>
+            Back to Dashboard
+          </button>
+        </div>
+        <div className="center">
+          <h2 className="header-title">All Patient Appointments</h2>
+        </div>
+        <div className="right"></div>
       </div>
 
       {patients.length === 0 ? (

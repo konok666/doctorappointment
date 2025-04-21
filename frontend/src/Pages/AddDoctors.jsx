@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../Style/AddDoctorPage.css";
 
 const AddDoctorPage = () => {
@@ -15,6 +16,7 @@ const AddDoctorPage = () => {
   });
 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +34,14 @@ const AddDoctorPage = () => {
 
   return (
     <div className="add-doctor-page">
-      <h2>Add Doctor</h2>
+      <div className="header-row">
+        <button className="back-button" onClick={() => navigate("/admin-panel")}>
+          Back to Dashboard
+        </button>
+        <h2 className="add-doctor-title">Add Doctor</h2>
+        <div className="spacer" /> {/* To keep center alignment */}
+      </div>
+
       <div className="doctor-form">
         <div className="doctor-fields">
           <div className="left-column">
