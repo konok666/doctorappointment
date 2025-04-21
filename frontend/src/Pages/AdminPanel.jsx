@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaUserMd, FaCalendarCheck, FaUser } from "react-icons/fa";
+import { FaUserMd, FaCalendarCheck, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { MdDashboard, MdPersonAdd } from "react-icons/md";
 import { IoMdListBox } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
@@ -9,12 +9,6 @@ import "../Style/AdminPanel.css";
 const AdminPanel = () => {
   const navigate = useNavigate();
   const [activePage, setActivePage] = useState("appointments");
-
-  // const [appointments, setAppointments] = useState([
-  //   { name: "Bishal Chaudhury", date: "24th July, 2024" },
-  //   { name: "John Doe", date: "25th July, 2024" },
-  //   { name: "Jane Smith", date: "26th July, 2024" },
-  // ]);
 
   const [doctors, setDoctors] = useState([
     { img: "/doc1.png", name: "Dr. Richard James", specialization: "Neurologist" },
@@ -25,37 +19,18 @@ const AdminPanel = () => {
     { img: "/doc6.png", name: "Dr. Konok Sarkar", specialization: "General Physician" },
   ]);
 
-  // const removeAppointment = (index) => {
-  //   setAppointments(appointments.filter((_, i) => i !== index));
-  // };
-
   const removeDoctor = (index) => {
     setDoctors(doctors.filter((_, i) => i !== index));
   };
 
+  const handleLogout = () => {
+    // Clear token or session if using any auth
+    localStorage.removeItem("adminToken"); // adjust key as needed
+    navigate("/admin-login");
+  };
+
   const renderContent = () => {
     switch (activePage) {
-      // case "appointments":
-      //   return (
-      //     <div className="latest-appointments">
-      //       <h2><FaCalendarCheck /> Latest Appointments</h2>
-      //       {appointments.map((appointment, index) => (
-      //         <div key={index} className="appointment-item">
-      //           <div className="appointment-details">
-      //             <img src="profile_pic.png" alt="Patient" />
-      //             <div>
-      //               <p className="font-bold">{appointment.name}</p>
-      //               <p className="text-sm text-gray-500">Booking on {appointment.date}</p>
-      //             </div>
-      //           </div>
-      //           <button className="close-btn" onClick={() => removeAppointment(index)}>
-      //             <AiOutlineClose />
-      //           </button>
-      //         </div>
-      //       ))}
-      //     </div>
-      //   );
-
       case "doctorsList":
         return (
           <div className="doctors-list-container">
@@ -80,7 +55,6 @@ const AdminPanel = () => {
             </div>
           </div>
         );
-
       default:
         return <h2>Welcome to Admin Panel</h2>;
     }
@@ -94,20 +68,20 @@ const AdminPanel = () => {
           <li onClick={() => setActivePage("appointments")}>
             <MdDashboard /> Dashboard
           </li>
-          {/* <li onClick={() => navigate("/view-patients")}>
-            <MdPersonAdd /> View Patient
-          </li> */}
           <li onClick={() => navigate("/view-patients")}>
             <FaCalendarCheck /> Appointments
           </li>
           <li onClick={() => setActivePage("doctorsList")}>
             <IoMdListBox /> Doctors List
           </li>
-          <li onClick={() => navigate("/add-Patient")}>
+          <li onClick={() => navigate("/add-patient")}>
             <MdPersonAdd /> Add Patient
           </li>
-          <li onClick={() => navigate("/add-Doctors")}>
+          <li onClick={() => navigate("/add-doctors")}>
             <MdPersonAdd /> Add Doctor
+          </li>
+          <li onClick={handleLogout} style={{ color: "red", fontWeight: "bold" }}>
+            <FaSignOutAlt /> Logout
           </li>
         </ul>
       </div>
@@ -118,10 +92,6 @@ const AdminPanel = () => {
             <FaUserMd />
             <p>{doctors.length} Doctors</p>
           </div>
-          {/* <div className="stats-card">
-            <FaCalendarCheck />
-            <p>{appointments.length} Appointments</p>
-          </div> */}
           <div className="stats-card">
             <FaUser />
             <p>5 Patients</p>
