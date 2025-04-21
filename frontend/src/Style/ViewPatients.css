@@ -1,0 +1,80 @@
+.view-patients-page {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.view-patients-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.patients-table th,
+.patients-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.patients-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.patients-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover, .delete-button:hover {
+  opacity: 0.8;
+}
+input {
+  padding: 4px;
+  width: 100%;
+}
+
+.save-button, .cancel-button {
+  margin: 0 4px;
+}

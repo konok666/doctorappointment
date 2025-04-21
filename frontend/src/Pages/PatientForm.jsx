@@ -1,65 +1,31 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import emailjs from '@emailjs/browser';
+import axios from "axios";
 import "../Style/PatientForm.css";
 
 const PatientForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const doctor = location.state?.doctor;
-  const form = useRef();
 
   const [formData, setFormData] = useState({
-    patientName: '',
-    patientEmail: '',
-    phone: '',
-    date: '',
-    time: '',
-    problem: ''
+    patientName: "",
+    email: "",
+    phone: "",
+    appointmentDate: "",
+    appointmentTime: "",
+    medicalIssue: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!doctor) {
-    return <h2>Error: No doctor information found</h2>;
+    return <h2 className="error-message">Error: Doctor information not found</h2>;
   }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const sendConfirmationEmail = async () => {
-    try {
-      // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
-
-      const templateParams = {
-        to_name: formData.patientName,
-        to_email: formData.patientEmail,
-        doctor_name: doctor.name,
-        appointment_date: formData.date,
-        appointment_time: formData.time,
-        doctor_specialization: doctor.specialization,
-        problem: formData.problem,
-        phone: formData.phone
-      };
-
-      const result = await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
-        templateParams
-      );
-
-      console.log('Email sent successfully:', result.text);
-      return result;
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      throw error;
-    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -67,17 +33,24 @@ const PatientForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Send confirmation email
-      await sendConfirmationEmail();
+      const payload = {
+        ...formData,
+        doctorId: doctor.id,
+      };
 
-      // Show success message
-      alert('Appointment booked successfully! A confirmation email has been sent.');
-      
-      // Navigate back to doctors list
-      navigate('/all-doctors');
+      const response = await axios.post(
+        "http://localhost:5000/api/appointment/insert",
+        payload
+      );
+
+      alert(response.data.message);
+      navigate("/all-doctors");
     } catch (error) {
-      console.error('Error:', error);
-      alert('There was an error booking your appointment. Please try again.');
+      console.error("Error booking appointment:", error.response?.data || error.message);
+      alert(
+        error.response?.data?.message ||
+          "Failed to book the appointment. Please try again later."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -87,14 +60,18 @@ const PatientForm = () => {
     <div className="patient-form-container">
       <h2>Book Appointment with {doctor.name}</h2>
       <div className="doctor-info">
-        <img src={doctor.imgSrc} alt={doctor.name} className="doctor-thumbnail" />
-        <div>
+        <img
+          src={doctor.imgSrc}
+          alt={`${doctor.name}'s photo`}
+          className="doctor-thumbnail"
+        />
+        <div className="doctor-details">
           <h3>{doctor.specialization}</h3>
           <p>Status: {doctor.status}</p>
         </div>
       </div>
 
-      <form ref={form} onSubmit={handleSubmit} className="appointment-form">
+      <form onSubmit={handleSubmit} className="appointment-form">
         <div className="form-group">
           <label htmlFor="patientName">Full Name:</label>
           <input
@@ -103,18 +80,20 @@ const PatientForm = () => {
             name="patientName"
             value={formData.patientName}
             onChange={handleInputChange}
+            placeholder="Enter your full name"
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="patientEmail">Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
-            id="patientEmail"
-            name="patientEmail"
-            value={formData.patientEmail}
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
+            placeholder="Enter your email"
             required
           />
         </div>
@@ -127,51 +106,61 @@ const PatientForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
+            placeholder="Enter your phone number"
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="date">Preferred Date:</label>
+          <label htmlFor="appointmentDate">Preferred Date:</label>
           <input
             type="date"
-            id="date"
-            name="date"
-            value={formData.date}
+            id="appointmentDate"
+            name="appointmentDate"
+            value={formData.appointmentDate}
             onChange={handleInputChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="time">Preferred Time:</label>
+          <label htmlFor="appointmentTime">Preferred Time:</label>
           <input
             type="time"
-            id="time"
-            name="time"
-            value={formData.time}
+            id="appointmentTime"
+            name="appointmentTime"
+            value={formData.appointmentTime}
             onChange={handleInputChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="problem">Health Problem:</label>
+          <label htmlFor="medicalIssue">Health Problem:</label>
           <textarea
-            id="problem"
-            name="problem"
-            value={formData.problem}
+            id="medicalIssue"
+            name="medicalIssue"
+            value={formData.medicalIssue}
             onChange={handleInputChange}
+            placeholder="Describe your health problem"
             required
           />
         </div>
 
         <div className="form-actions">
-          <button type="button" onClick={() => navigate(-1)} className="back-button">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="back-button"
+          >
             Back
           </button>
-          <button type="submit" disabled={isSubmitting} className="submit-button">
-            {isSubmitting ? 'Confirming...' : 'Confirm Booking'}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="submit-button"
+          >
+            {isSubmitting ? "Submitting..." : "Confirm Booking"}
           </button>
         </div>
       </form>

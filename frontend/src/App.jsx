@@ -1,23 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Navbar from './Components/Navbar'; // Navbar component
-import Home from './Pages/Home'; // Home page
-import Contact from './Pages/Contact'; // Contact page
-import About from './Pages/About'; // About page
-import AllDoctor from './Pages/AllDoctor';  // AllDoctor page
-import Login from './Pages/Login';  // Login page
-import Signup from './Pages/Signup';  // Signup page
-import MyProfile from './Pages/MyProfile'; // Correctly importing the Login component
-import AdminLogin from './Pages/AdminLogin'; // Admin login page
-import AdminPanel from './Pages/AdminPanel';  // Admin panel page
-import DoctorProfile from "./Pages/DoctorProfile";  // Correctly importing the
-import PatientForm from "./Pages/PatientForm";  // Patient form page
+import Navbar from './Components/Navbar'; // Navigation bar
+import Home from './Pages/Home';
+import Contact from './Pages/Contact';
+import About from './Pages/About';
+import AllDoctor from './Pages/AllDoctor';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
+import MyProfile from './Pages/MyProfile';
+import AdminLogin from './Pages/AdminLogin';
+import AdminPanel from './Pages/AdminPanel';
+import DoctorProfile from './Pages/DoctorProfile';
+import PatientForm from './Pages/PatientForm';
+//import AddDoctors from './Pages/AddDoctors';
+import AddPatients from './Pages/AddPatients';
+import ViewPatients from './Pages/ViewPatients';
+import FormPatientEdit from './Pages/FormPatientEdit';
+import AddDoctors from './Pages/AddDoctors';
+ // Fixed casing (Capital "C")
 
 function App() {
   return (
     <Router>
-      <div  className="App">
+      <div className="App">
         {/* Navigation bar */}
         <Navbar />
 
@@ -25,9 +31,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/all-doctors" element={<AllDoctor />} /> 
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/all-doctors" element={<AllDoctor />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<MyProfile />} />
@@ -35,6 +41,11 @@ function App() {
             <Route path="/admin-panel" element={<AdminPanel />} />
             <Route path="/doctor-profile" element={<DoctorProfile />} />
             <Route path="/patient-form" element={<PatientForm />} />
+            <Route path="/add-doctors" element={<AddDoctors  />} />
+            <Route path="/add-patient" element={<AddPatients />} />
+            <Route path="/view-patients" element={<ViewPatients  />} />
+            <Route path="/edit-patients/:id" element={<FormPatientEdit />} />
+
           </Routes>
         </main>
 
