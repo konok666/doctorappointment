@@ -5,8 +5,8 @@ import "../Style/MyProfile.css";
 const MyProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "Bishal Chaudhary",
-    email: "bishalkumarchaudhary@gmail.com",
+    name: "Bishal Kumar",
+    email: "bishalkumar@gmail.com",
     phone: "+977 9804736211",
     address: "Nepal",
     gender: "Male",
